@@ -40,13 +40,13 @@ router.post("/appointment", async (req, res) => {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "process.env.GMAIL",
-        pass: "process.env.PASS",
+        user: process.env.GMAIL,
+        pass: process.env.PASS,
       },
     });
 
     const mailOptions = {
-      from: "process.env.GMAIL",
+      from: process.env.GMAIL,
       to: email_pasien,
       subject: "Appointment Confirmation",
       text: `Konsultasi Anda akan dilakukan bersama Dr. ${nama_psikolog} secara ${type} pada ${dayOfWeek}, ${appointmentDate.toLocaleDateString(
