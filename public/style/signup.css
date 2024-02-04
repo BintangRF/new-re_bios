@@ -69,6 +69,10 @@ label[for="laki"] {
   margin-right: 1vw;
 }
 
+div.radio {
+  margin-top: 1rem;
+}
+
 input[name="nama_pasien"],
 input[name="tanggal_lahir"],
 input[name="nomor_ponsel"],
@@ -80,7 +84,7 @@ input[name="password"] {
   border-bottom: 1px solid #1450a3;
   width: 30vw;
   opacity: 0.9;
-  margin-top: 1vw;
+  margin-top: 1rem;
 }
 
 input[name="gender"] {
@@ -89,7 +93,7 @@ input[name="gender"] {
 
 button {
   background-color: #1450a3;
-  margin-top: 1vw;
+  margin-top: 1rem;
   width: 30vw;
   color: #fff;
   padding: 0.8vw;
@@ -107,8 +111,56 @@ img.boy {
 }
 
 p {
-  margin-top: 0.1vw;
+  margin-top: 1rem;
   opacity: 0.5;
   font-size: 1.2em;
   text-align: center;
+}
+
+@media (max-width: 991px) {
+  img.boy {
+    display: none;
+  }
+
+  h2#logo {
+    margin: 0px;
+    padding-left: 0px;
+    width: 0vw;
+  }
+
+  div.radio {
+    margin-top: 2rem;
+  }
+
+  input[name="nama_pasien"],
+  input[name="tanggal_lahir"],
+  input[name="nomor_ponsel"],
+  input[name="email_pasien"],
+  input[name="alamat"],
+  input[name="password"] {
+    width: 80vw;
+    margin-top: 2rem;
+  }
+
+  label,
+  input {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #4682a9;
+    text-transform: none;
+  }
+
+  button {
+    font-size: 2em;
+    margin-top: 2rem;
+    width: 30vw;
+    color: #fff;
+    padding: 0.8vw;
+  }
+
+  p {
+    margin-top: 2rem;
+    font-size: 1.5em;
+    text-align: center;
+  }
 }

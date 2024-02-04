@@ -8,10 +8,8 @@ const fs = require("fs");
 const signupRouter = require("./routes/signup");
 const loginRouter = require("./routes/login");
 const appointmentRoutes = require("./routes/appointment");
-const profileRoutes = require("./routes/profile");
 const pembayaranRoutes = require("./routes/pembayaran");
 const editprofileRoutes = require("./routes/edit_profile");
-const apiRoutes = require("./routes/api");
 
 const sequelize = require("./config/database");
 const Pasien = require("./models/pasien");
@@ -81,8 +79,6 @@ const upload = multer({
 app.use(express.static(path.join(__dirname, "views")));
 
 // Routing
-app.use("/", apiRoutes);
-
 app.get("/", (req, res) => {
   const indexHtml = fs.readFileSync(
     path.join(__dirname, "views", "index.html"),
@@ -144,7 +140,6 @@ app.get("/signup", (req, res) => {
 });
 
 // Route Dashboard
-
 app.get("/index", (req, res) => {
   const indexHtml = fs.readFileSync(
     path.join(__dirname, "views", "index.html"),
@@ -244,7 +239,7 @@ app.get("/pembayaran", checkLoggedIn, async (req, res) => {
       res.send(`
         <script>
           alert('${errorMessage}');
-          window.location='/index'; // Redirect ke halaman awal
+          window.location='/index'; 
         </script>
       `);
       return;
@@ -281,7 +276,6 @@ app.get("/pembayaran", checkLoggedIn, async (req, res) => {
 });
 
 // Route untuk halaman profil
-// app.use("/", profileRoutes);
 app.get("/profile", checkLoggedIn, async (req, res) => {
   if (req.session.email_pasien) {
     const email_pasien = req.session.email_pasien;

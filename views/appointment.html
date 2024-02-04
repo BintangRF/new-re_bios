@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Appointment</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Font -->
@@ -15,55 +16,10 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/style/appointment.css" />
     <link rel="stylesheet" href="/style/navbar.css" />
-
-    <title>Appointment</title>
   </head>
   <body>
     <!--  -->
-    <!-- <header class="header">
-      <a href="/index" class="logo">
-        <img class="logo" src="/img/logo.png" alt=""
-      </a>
 
-      <nav class="navbar">
-        <a href="/index">home</a>
-        <a href="#services">services</a>
-        <a href="#doctors">find a psycholog</a>
-        <a href="#book">book</a>
-        <a href="#blogs">blogs</a>
-        <a href="#contact">contact us</a>
-      </nav>
-
-      <div style="display: flex; align-items: center">
-        <p
-          style="
-            color: #4682a9;
-            border: 1px solid #4682a9;
-            padding: 1em 5em 1em 1em;
-            border-radius: 50px;
-            font-size: 1.1em;
-          ">
-          <%= nama_pendek %>
-        </p>
-        <div class="profile">
-          <img
-            src="data:image/png;base64, <%= foto_pasien %>"
-            alt="Foto Profil"
-            class="poto_profile" />
-          <div class="profile-menu">
-            <button onclick="myFunction()" class="dropbtn"></button>
-            <div id="myDropdown" class="dropdown-content">
-              <a href="/profile" style="margin: 0" class="dropdown">Profile</a>
-              <a href="/pembayaran" style="margin: 0" class="dropdown"
-                >Pembayaran</a
-              >
-              <a href="/logout" style="margin: 0" class="dropdown">Logout</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="menu-btn" class="fas fa-bars"></div>
-    </header> -->
     <!-- Tampilan header saat sudah login -->
     <div id="navbar-container"></div>
     <!--  -->
@@ -127,6 +83,16 @@
         </div>
 
         <div class="input_field">
+          <label>Sharing Method</label>
+          <select name="type" id="type" required>
+            <option value="voice call">Voice Call</option>
+            <option value="video call">Video Call</option>
+            <option value="chat">Chat</option>
+            <option value="face to face">Face to Face</option>
+          </select>
+        </div>
+
+        <div class="input_field">
           <label for="keluhan">Complaint</label>
           <textarea
             name="keluhan"
@@ -145,13 +111,11 @@
     <script src="/script/script.js"></script>
 
     <script>
-      // Fungsi untuk memeriksa apakah pengguna sudah login atau belum
       function checkLoginStatus() {
-        fetch("/check-login-status") // Ganti dengan endpoint yang sesuai untuk memeriksa status login
+        fetch("/check-login-status")
           .then((response) => response.json())
           .then((data) => {
             if (data.isLoggedIn) {
-              // Pengguna sudah login, load navbar sesudah login
               fetch("/navbar-after-login")
                 .then((response) => response.text())
                 .then((navbarHTML) => {
@@ -159,7 +123,6 @@
                     navbarHTML;
                 });
             } else {
-              // Pengguna belum login, load navbar sebelum login
               fetch("/navbar-before-login")
                 .then((response) => response.text())
                 .then((navbarHTML) => {
@@ -170,7 +133,6 @@
           });
       }
 
-      // Panggil fungsi checkLoginStatus saat halaman dimuat
       window.onload = checkLoginStatus();
     </script>
   </body>

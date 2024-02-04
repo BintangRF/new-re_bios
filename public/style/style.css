@@ -35,9 +35,6 @@ section {
 section:nth-child(even) {
   background: #f5f5f5;
 }
-/* header */
-
-/* SignUp */
 
 /* -------------------------------------------------------------- */
 
@@ -207,18 +204,12 @@ section:nth-child(even) {
 
 .background-img {
   position: absolute;
-  z-index: 1; /* Ubah z-index sesuai kebutuhan Anda */
+  z-index: 1;
 }
 
 .foreground-img {
   position: relative;
-  z-index: 2; /* Ubah z-index sesuai kebutuhan Anda (lebih tinggi dari background) */
-}
-
-.doctors .box-container .box img {
-  font-size: 1.7rem;
-  color: var(--blue);
-  padding-bottom: 0.7rem;
+  z-index: 2;
 }
 
 .doctors .box-container .box h3 {
@@ -475,87 +466,55 @@ section:nth-child(even) {
   section {
     padding: 2rem;
   }
-}
 
-@media (max-width: 768px) {
-  #menu-btn {
-    display: initial;
-    margin-left: 100px;
+  /* doctor */
+  .doctors .box-container .box {
+    width: 30vw;
   }
 
-  .header .navbar {
-    position: absolute;
-    top: 115%;
-    right: 2rem;
-    border-radius: 0.5rem;
-    box-shadow: var(--box-shadow);
-    width: 30rem;
-    border: var(--border);
-    background: #fff;
-    transform: scale(0);
-    opacity: 0;
-    transform-origin: top right;
-    transition: none;
-  }
-
-  nav.navbar {
-    display: block;
-  }
-
-  nav.navbar.active {
-    transform: scale(1);
-    opacity: 1;
-    transition: 0.2s ease-out;
-    display: block;
-  }
-
-  .header .navbar a {
-    font-size: 2rem;
-    display: block;
-    margin: 2.5rem;
-  }
-
-  .btn_sign {
-    display: inline-block;
-    padding: 0.5rem;
-    border: var(--border);
-    border-radius: 0.5rem;
-    color: var(--blue);
-    cursor: pointer;
-    font-size: 1.7rem;
-    background: #fff;
-    height: 4rem;
-    margin-left: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  a.sign {
-    color: #1450a3;
-  }
-
-  .btn_login {
-    display: inline-block;
-    padding: 0.5rem;
-    border: var(--border);
-    border-radius: 0.5rem;
-    color: var(--blue);
-    cursor: pointer;
-    font-size: 1.7rem;
-    background: #1450a3;
-    color: #fff;
-    margin-left: 1rem;
-  }
-
-  .show {
-    display: block;
-    position: absolute;
-    right: -70px;
-    top: 40px;
-  }
+  /* ------------------------------------------------------ */
 }
 
 @media (max-width: 450px) {
   html {
     font-size: 50%;
+  }
+
+  section {
+    padding: 0.5rem;
+  }
+
+  /* doctor */
+  .doctors .box-container {
+    width: 100%;
+  }
+
+  .doctors .box-container .box {
+    width: 40vw;
+  }
+
+  .foreground-img {
+    width: 120%;
+    height: 177.25px;
+  }
+
+  .doctors .box-container .box img {
+    padding-bottom: 0.7rem;
+    width: 100%;
+  }
+  /* ------------------------------------------------------ */
+
+  /* book */
+
+  .book .row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+  }
+
+  .book .row .content {
+    max-width: 100%;
+    flex: 1 1 45rem;
   }
 }

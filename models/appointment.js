@@ -1,9 +1,6 @@
 const Sequelize = require("sequelize");
 const sequelize = require("../config/database"); //
 
-// const Pasien = require("./pasien");
-// const Psikolog = require("./psikolog");
-
 const Appointment = sequelize.define("tb_appointment", {
   id_appointment: {
     type: Sequelize.INTEGER,
@@ -18,10 +15,8 @@ const Appointment = sequelize.define("tb_appointment", {
   nama_psikolog: Sequelize.STRING,
   tanggal: Sequelize.DATE,
   waktu: Sequelize.TIME,
+  type: Sequelize.ENUM("voice call", "video call", "chat", "face to face"),
   keluhan: Sequelize.STRING,
 });
-
-// Appointment.belongsTo(Pasien, { foreignKey: "id_pasien" });
-// Appointment.belongsTo(Psikolog, { foreignKey: "nama_psikolog" });
 
 module.exports = Appointment;

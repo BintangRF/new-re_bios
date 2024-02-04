@@ -75,6 +75,7 @@ html {
   color: #fff;
   font-weight: bold;
 }
+
 .card1 a {
   font-size: 1.5em;
   background-color: #fff;
@@ -85,7 +86,7 @@ html {
 }
 
 img.profile {
-  width: 50%;
+  width: 80%;
   border-radius: 100px;
   margin: 1em;
 }
@@ -111,7 +112,6 @@ img.profile {
   color: #4682a9;
   font-size: 1.4em;
   text-align: left;
-  margin: 20px 0px 20px 0px;
 }
 
 .card2 .pembayaran {
@@ -171,7 +171,6 @@ img.profile {
   color: #4682a9;
   font-size: 1.4em;
   text-align: left;
-  margin: 0.5vw 0px 0.5vw 0px;
 }
 
 .card4 .jadwal_konsultasi {
@@ -182,14 +181,21 @@ img.profile {
 }
 /* ---------------------------- */
 
-@media (max-width: 1024px) {
-  .container_profile {
-    display: grid;
-    justify-content: flex-start;
-    position: relative;
+@media (max-width: 990px) {
+  .container_profile .kembali {
+    position: absolute;
+    padding: 2rem;
+    left: 10px;
+    top: 10px;
+    font-size: 1.8em;
   }
 
-  /* Adjust card widths and margins */
+  .container_profile {
+    display: grid;
+    position: relative;
+    margin-top: 8rem;
+  }
+
   .card3 {
     width: 90%;
     margin: 1rem 0;
@@ -198,47 +204,48 @@ img.profile {
 
   .card1 {
     text-align: center;
-    width: 100%;
+    width: 90vw;
     margin: 1rem 0;
+    order: 1;
   }
-  .card1 p,
-  a {
+
+  .card1 p {
     width: 40%;
+  }
+
+  .card1 p,
+  .card1 a {
+    font-size: 2em;
   }
 
   .card2,
   .card4 {
     width: 40%;
-    height: auto;
     margin: 0;
+    height: 20rem;
   }
 
   .card2 h4,
   .card2 p,
   .card4 h4,
   .card4 p {
-    font-size: 1.5em;
+    font-size: 2em;
   }
 
-  /* Adjust font sizes for smaller screens */
-
   .card3 p {
-    font-size: 2em;
+    font-size: 3em;
     width: 100%;
     line-height: 3em;
   }
 
-  /* Adjust image size */
-  img {
-    width: 20%;
+  img.profile {
+    width: 40%;
   }
 
-  /* Remove margin for biodata paragraphs */
   .biodata p {
     margin: 0;
   }
 
-  /* Adjust margins for .isi_jadwal */
   .isi_jadwal {
     margin-top: 1rem;
   }
@@ -255,8 +262,92 @@ img.profile {
     justify-content: center;
   }
 
+  .card3 {
+    order: 2;
+  }
+
+  .card4 {
+    position: absolute;
+    bottom: -200px;
+    left: 40px;
+  }
+  .card2 {
+    position: absolute;
+    bottom: -200px;
+    right: 40px;
+  }
+}
+
+/* ------------------ */
+@media (max-width: 450px) {
+  .container_profile .kembali {
+    display: none;
+  }
+
+  .container_profile {
+    display: grid;
+    position: relative;
+    margin-top: 8rem;
+  }
+
+  .card3 {
+    width: 90%;
+    margin: 1rem 0;
+    height: auto;
+  }
+
   .card1 {
+    text-align: center;
+    width: 90vw;
+    margin: 1rem 0;
     order: 1;
+  }
+  .card1 p {
+    width: 40%;
+  }
+
+  .card2,
+  .card4 {
+    width: 40%;
+    margin: 0;
+    height: 20rem;
+  }
+
+  .card2 h4,
+  .card2 p,
+  .card4 h4,
+  .card4 p {
+    font-size: 2em;
+  }
+
+  .card3 p {
+    font-size: 2em;
+    width: 100%;
+    line-height: 2em;
+  }
+
+  img.profile {
+    width: 40%;
+  }
+
+  .biodata p {
+    margin: 0;
+  }
+
+  .isi_jadwal {
+    margin-top: 1rem;
+  }
+
+  .baris_satu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .baris_dua {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .card3 {
@@ -265,78 +356,12 @@ img.profile {
 
   .card4 {
     position: absolute;
-    bottom: -170px;
+    bottom: -160px;
     left: 40px;
   }
   .card2 {
     position: absolute;
-    bottom: -170px;
+    bottom: -160px;
     right: 40px;
-  }
-}
-
-/* ------------------ */
-@media (max-width: 576px) {
-  .container_profile {
-    display: block;
-  }
-
-  /* Adjust card widths and margins */
-  .card3 {
-    width: 80%;
-    margin: 1rem 0;
-    height: auto;
-  }
-
-  .card1 {
-    text-align: center;
-    width: 100%;
-    margin: 1rem 0;
-  }
-  .card1 p,
-  a {
-    width: 40%;
-  }
-
-  .card2,
-  .card4 {
-    width: 40%;
-    height: auto;
-    margin: 0;
-  }
-
-  .card2 h4,
-  .card2 p,
-  .card4 h4,
-  .card4 p {
-    font-size: smaller;
-  }
-
-  /* Adjust font sizes for smaller screens */
-
-  .card3 p {
-    font-size: 1.2em;
-    width: 100%;
-  }
-
-  /* Remove margin for biodata paragraphs */
-  .biodata p {
-    margin: 0;
-  }
-
-  /* Adjust margins for .isi_jadwal */
-  .isi_jadwal {
-    margin-top: 1rem;
-  }
-
-  .card4 {
-    position: absolute;
-    bottom: -130px;
-    left: 30px;
-  }
-  .card2 {
-    position: absolute;
-    bottom: -130px;
-    right: 30px;
   }
 }

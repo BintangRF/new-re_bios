@@ -38,7 +38,7 @@
                 ><h1 style="font-size: 3em; margin-right: 0.5em">
                   <i class="fa-brands fa-linkedin"></i></h1
               ></a>
-              <a href="https://www.instagram.com/nama-anda" target="_blank"
+              <a href="https://www.linkedin.com/in/josiahfs" target="_blank"
                 ><h1 style="font-size: 3em">
                   <i class="fa-brands fa-instagram"></i></h1
               ></a>
@@ -47,7 +47,7 @@
         </div>
 
         <div class="team-card">
-          <img src="" alt="Member 2" />
+          <img src="/img/bintang.jpg" alt="Member 2" />
           <div class="divider"></div>
           <div class="team-member-info">
             <h2 class="team-member-name">Bintang Ramadhana Faturizky</h2>
@@ -92,19 +92,20 @@
         </div>
 
         <div class="team-card">
-          <img
-            src="https://www.rri.res.in/sites/default/files/2022-09/Abhisek%20Tamang.jpg"
-            alt="Member 2" />
+          <img src="/img/rahayu.jpg" alt="Member 2" />
           <div class="divider"></div>
           <div class="team-member-info">
             <h2 class="team-member-name">Rahayu Nur Rahmawati</h2>
             <p class="team-member-title">Frontend</p>
             <div style="display: flex; justify-content: center">
-              <a href="https://www.linkedin.com/in/nama-anda" target="_blank"
+              <a href="https://www.linkedin.com/in/rahayunur" target="_blank"
                 ><h1 style="font-size: 3em; margin-right: 0.5em">
                   <i class="fa-brands fa-linkedin"></i></h1
               ></a>
-              <a href="https://www.instagram.com/nama-anda" target="_blank"
+              <a
+                href="https://www.instagram.com/hyrahmaaa_
+"
+                target="_blank"
                 ><h1 style="font-size: 3em">
                   <i class="fa-brands fa-instagram"></i></h1
               ></a>
@@ -113,9 +114,7 @@
         </div>
 
         <div class="team-card">
-          <img
-            src="https://www.rri.res.in/sites/default/files/2022-09/Abhisek%20Tamang.jpg"
-            alt="Member 2" />
+          <img src="/img/raihanah.jpg" alt="Member 2" />
           <div class="divider"></div>
           <div class="team-member-info">
             <h2 class="team-member-name">Raihanah Zahira</h2>
@@ -136,13 +135,11 @@
         </div>
 
         <div class="team-card">
-          <img
-            src="https://www.rri.res.in/sites/default/files/2022-09/Abhisek%20Tamang.jpg"
-            alt="Member 2" />
+          <img src="/img/syahyana.jpg" alt="Member 2" />
           <div class="divider"></div>
           <div class="team-member-info">
             <h2 class="team-member-name">Syahyana Iswari</h2>
-            <p class="team-member-title">Backend</p>
+            <p class="team-member-title">Frontend</p>
             <div style="display: flex; justify-content: center">
               <a
                 href="https://www.linkedin.com/in/syahyana-iswari-0352a0270
@@ -167,13 +164,11 @@
     <script src="/script/script.js"></script>
 
     <script>
-      // Fungsi untuk memeriksa apakah pengguna sudah login atau belum
       function checkLoginStatus() {
-        fetch("/check-login-status") // Ganti dengan endpoint yang sesuai untuk memeriksa status login
+        fetch("/check-login-status")
           .then((response) => response.json())
           .then((data) => {
             if (data.isLoggedIn) {
-              // Pengguna sudah login, load navbar sesudah login
               fetch("/navbar-after-login")
                 .then((response) => response.text())
                 .then((navbarHTML) => {
@@ -181,7 +176,6 @@
                     navbarHTML;
                 });
             } else {
-              // Pengguna belum login, load navbar sebelum login
               fetch("/navbar-before-login")
                 .then((response) => response.text())
                 .then((navbarHTML) => {
@@ -192,7 +186,6 @@
           });
       }
 
-      // Panggil fungsi checkLoginStatus saat halaman dimuat
       window.onload = checkLoginStatus();
     </script>
   </body>

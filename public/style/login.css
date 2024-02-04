@@ -41,8 +41,6 @@ section:nth-child(even) {
   border-radius: 3px;
   background: #fff;
   color: #1450a3;
-  margin-top: 15vh;
-  text-shadow: 0px 1px 3px #777;
   margin-top: 25vh;
 }
 
@@ -55,7 +53,7 @@ form input {
   display: flex;
   width: 100%;
   margin-top: 20px;
-  padding: 1vw;
+  padding: 1rem;
   border: none;
   border: 1px solid #1450a3;
   outline: none;
@@ -73,10 +71,10 @@ form input {
 
 button {
   background-color: #1450a3;
-  margin-top: 1vw;
+  margin-top: 1rem;
   width: 100%;
   color: #fff;
-  padding: 0.8vw;
+  padding: 0.8rem;
   border-radius: 5px;
   font-weight: 700;
   cursor: pointer;
@@ -86,4 +84,59 @@ button {
   text-align: center;
   color: #1450a3;
   font-size: 1.3em;
+  margin-top: 1rem;
+}
+
+@media (max-width: 991px) {
+  .login {
+    width: 50vw;
+    margin: auto;
+    color: #1450a3;
+    margin-top: 25vh;
+  }
+
+  .login h1 {
+    text-align: center;
+    font-size: 6em;
+  }
+
+  .login p {
+    font-size: 2em;
+  }
+
+  form input {
+    font-size: 2em;
+  }
+
+  button {
+    font-size: 2em;
+  }
+}
+
+@media (max-width: 450px) {
+  .login {
+    width: 80vw;
+    margin: auto;
+    color: #1450a3;
+    margin-top: 25vh;
+  }
+
+  .login h1 {
+    text-align: center;
+    font-size: 6em;
+  }
+
+  .login p {
+    font-size: 2em;
+  }
+
+  form input {
+    font-size: 2em;
+    padding: 2rem;
+  }
+
+  button {
+    font-size: 2.1em;
+    padding: 1rem;
+  }
 }

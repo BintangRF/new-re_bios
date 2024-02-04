@@ -8,7 +8,6 @@ const Pasien = require("../models/pasien");
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-// Serve static files from the "public" directory
 router.use(express.static("public"));
 
 router.post("/signup", upload.single("foto_pasien"), async (req, res) => {
@@ -27,7 +26,6 @@ router.post("/signup", upload.single("foto_pasien"), async (req, res) => {
       ? req.file.buffer
       : await getDefaultProfileImage();
 
-    // Ganti path sesuai dengan folder dan nama file default yang Anda inginkan
     const fotoFileName = "poto-profil.png";
     const fotoPath = path.join(__dirname, "../public/uploads/", fotoFileName);
 
@@ -59,7 +57,6 @@ router.post("/signup", upload.single("foto_pasien"), async (req, res) => {
 
 async function getDefaultProfileImage() {
   try {
-    // Ganti path sesuai dengan folder dan nama file default yang Anda inginkan
     const defaultImagePath = path.join(
       __dirname,
       "../public/uploads/poto-profil.png"

@@ -170,13 +170,11 @@
     <script src="/script/script.js"></script>
 
     <script>
-      // Fungsi untuk memeriksa apakah pengguna sudah login atau belum
       function checkLoginStatus() {
-        fetch("/check-login-status") // Ganti dengan endpoint yang sesuai untuk memeriksa status login
+        fetch("/check-login-status")
           .then((response) => response.json())
           .then((data) => {
             if (data.isLoggedIn) {
-              // Pengguna sudah login, load navbar sesudah login
               fetch("/navbar-after-login")
                 .then((response) => response.text())
                 .then((navbarHTML) => {
@@ -184,7 +182,6 @@
                     navbarHTML;
                 });
             } else {
-              // Pengguna belum login, load navbar sebelum login
               fetch("/navbar-before-login")
                 .then((response) => response.text())
                 .then((navbarHTML) => {
@@ -195,7 +192,6 @@
           });
       }
 
-      // Panggil fungsi checkLoginStatus saat halaman dimuat
       window.onload = checkLoginStatus();
     </script>
   </body>
