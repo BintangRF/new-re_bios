@@ -14,8 +14,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="/style/appointment.css" />
-    <link rel="stylesheet" href="/style/navbar.css" />
+    <link rel="stylesheet" href="style/appointment.css" />
+    <link rel="stylesheet" href="style/navbar.css" />
   </head>
   <body>
     <!--  -->
@@ -27,7 +27,7 @@
       <p><a href="/index2">Kembali</a></p>
       <h1>Appointment</h1>
       <p>Selamat datang, <%= nama_pendek %>. Silahkan lakukan appointment.</p>
-      <form action="/appointment" method="POST">
+      <form id="form-appointment" action="/appointment" method="POST">
         <div class="isi" style="display: none">
           <label for="id_pasien">ID Pasien:</label>
           <input
@@ -62,7 +62,7 @@
 
         <div class="input_field">
           <label for="nama_psikolog">Psycholog</label>
-          <select name="nama_psikolog" id="nama_psikolog">
+          <select name="nama_psikolog" id="nama_psikolog" required>
             <%= psikologOptions %>
           </select>
         </div>
@@ -79,7 +79,9 @@
 
         <div class="input_field">
           <label>Time</label>
-          <input type="time" name="waktu" id="waktu" required class="input" />
+          <select name="waktu" id="waktu" required>
+            <%= waktuOptions %>
+          </select>
         </div>
 
         <div class="input_field">
@@ -104,11 +106,15 @@
             placeholder="Your Complaint"
             style="height: 100px"></textarea>
         </div>
-        <input type="submit" class="btn_submit" value="Buat Appointment" />
+        <input
+          id="pay-button"
+          type="submit"
+          class="btn_submit"
+          value="Buat Appointment" />
       </form>
     </div>
 
-    <script src="/script/script.js"></script>
+    <script src="script/script.js"></script>
 
     <script>
       function checkLoginStatus() {

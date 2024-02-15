@@ -1,6 +1,16 @@
 const express = require("express");
+const path = require("path");
+const fs = require("fs");
 const router = express.Router();
 const Pasien = require("../models/pasien");
+
+router.get("/login", (req, res) => {
+  const loginHtml = fs.readFileSync(
+    path.join(__dirname, "..", "views", "login.html"),
+    "utf8"
+  );
+  res.send(loginHtml);
+});
 
 router.post("/login", async (req, res) => {
   const { email_pasien, password } = req.body;

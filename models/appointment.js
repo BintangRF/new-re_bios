@@ -1,5 +1,5 @@
 const Sequelize = require("sequelize");
-const sequelize = require("../config/database"); //
+const sequelize = require("../config/database");
 
 const Appointment = sequelize.define("tb_appointment", {
   id_appointment: {
@@ -14,7 +14,7 @@ const Appointment = sequelize.define("tb_appointment", {
   nama_pasien: Sequelize.STRING,
   nama_psikolog: Sequelize.STRING,
   tanggal: Sequelize.DATE,
-  waktu: Sequelize.TIME,
+  waktu: Sequelize.ENUM("08:00", "10:00", "13:00", "15:00", "17:00"),
   type: Sequelize.ENUM("voice call", "video call", "chat", "face to face"),
   keluhan: Sequelize.STRING,
 });

@@ -89,6 +89,7 @@ img.profile {
   width: 80%;
   border-radius: 100px;
   margin: 1em;
+  border: 1px solid #fff;
 }
 
 /* ---------------- */

@@ -1,14 +1,23 @@
 const express = require("express");
+const path = require("path");
+const fs = require("fs");
+const app = express();
 const router = express.Router();
 const multer = require("multer");
-const fs = require("fs").promises;
-const path = require("path");
 const Pasien = require("../models/pasien");
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-router.use(express.static("public"));
+app.use(express.static("public"));
+
+router.get("/signup", (req, res) => {
+  const signupHtml = fs.readFileSync(
+    path.join(__dirname, "..", "views", "signup.html"),
+    "utf8"
+  );
+  res.send(signupHtml);
+});
 
 router.post("/signup", upload.single("foto_pasien"), async (req, res) => {
   try {

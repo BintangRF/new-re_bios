@@ -1,7 +1,8 @@
 const express = require("express");
+const path = require("path");
+const fs = require("fs");
 const router = express.Router();
 const multer = require("multer");
-const path = require("path");
 const Pasien = require("../models/pasien");
 
 const storage = multer.diskStorage({
@@ -16,6 +17,38 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage: storage });
+
+router.get("/edit_profile", (req, res) => {
+  const userId = req.session.userId;
+  if (!userId) {
+    return res.redirect("/login");
+  }
+
+  Pasien.findOne({ where: { id_pasien: userId } })
+    .then((profileData) => {
+      if (!profileData) {
+        return res.status(404).send("Profil tidak ditemukan");
+      }
+      const editprofileHtml = fs.readFileSync(
+        path.join(__dirname, "..", "views", "edit_profile.html"),
+        "utf8"
+      );
+
+      const renderedHtml = editprofileHtml
+        .replace(/<%= profileData.id_pasien %>/g, profileData.id_pasien)
+        .replace(/<%= profileData.foto_pasien %>/g, profileData.foto_pasien)
+        .replace(/<%= profileData.nama_pasien %>/g, profileData.nama_pasien)
+        .replace(/<%= profileData.email_pasien %>/g, profileData.email_pasien)
+        .replace(/<%= profileData.nomor_ponsel %>/g, profileData.nomor_ponsel)
+        .replace(/<%= profileData.alamat %>/g, profileData.alamat);
+
+      res.send(renderedHtml);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      res.status(500).send("Terjadi kesalahan saat mengambil data profil");
+    });
+});
 
 router.post("/edit_profile", upload.single("foto_pasien"), async (req, res) => {
   const userId = req.session.userId;

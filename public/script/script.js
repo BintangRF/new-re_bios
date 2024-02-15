@@ -43,13 +43,3 @@ function updateLayout() {
   }
 }
 window.addEventListener("resize", updateLayout);
-
-// async function getDataFromBackend() {
-//   try {
-//     const response = await fetch(`${backendUrl}/api/data`);
-//     const data = await response.json();
-//     // Lakukan sesuatu dengan data dari backend
-//   } catch (error) {
-//     console.error("Error:", error);
-//   }
-// }
