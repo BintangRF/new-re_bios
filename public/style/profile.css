@@ -50,18 +50,23 @@ html {
   top: 100px;
 }
 
-.baris_satu {
-  display: grid;
-  grid-template-columns: 1fr;
+.boxContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
 }
 
 .card1 {
-  width: 230px;
-  height: 280px;
+  width: 30%;
+  height: 300px;
   background-color: #4682a9;
   margin: 1vw;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -86,7 +91,7 @@ html {
 }
 
 img.profile {
-  width: 80%;
+  width: 50%;
   border-radius: 100px;
   margin: 1em;
   border: 1px solid #fff;
@@ -94,8 +99,9 @@ img.profile {
 
 /* ---------------- */
 .card2 {
-  width: 230px;
-  height: 180px;
+  width: 30%;
+  height: 230px;
+  height: max-content;
   background-color: #fff;
   margin: 1vw;
   border-radius: 10px;
@@ -124,14 +130,9 @@ img.profile {
 
 /* ------------------ */
 
-.baris_dua {
-  display: grid;
-  grid-template-columns: 1fr;
-}
-
 .card3 {
-  width: 640px;
-  height: 280px;
+  width: 60%;
+  height: 300px;
   background-color: #4682a9;
   border: 1px solid #fff;
   margin: 1vw;
@@ -153,7 +154,7 @@ img.profile {
 
 /* -------------------------- */
 .card4 {
-  width: 230px;
+  width: 30%;
   height: 180px;
   background-color: #fff;
   margin: 1vw;
@@ -187,27 +188,25 @@ img.profile {
     position: absolute;
     padding: 2rem;
     left: 10px;
-    top: 10px;
+    top: 100px;
     font-size: 1.8em;
   }
 
   .container_profile {
-    display: grid;
-    position: relative;
     margin-top: 8rem;
   }
 
   .card3 {
-    width: 90%;
+    width: 100%;
     margin: 1rem 0;
     height: auto;
   }
 
   .card1 {
     text-align: center;
-    width: 90vw;
+    width: 100%;
+    height: 330px;
     margin: 1rem 0;
-    order: 1;
   }
 
   .card1 p {
@@ -221,8 +220,7 @@ img.profile {
 
   .card2,
   .card4 {
-    width: 40%;
-    margin: 0;
+    width: 100%;
     height: 20rem;
   }
 
@@ -240,7 +238,7 @@ img.profile {
   }
 
   img.profile {
-    width: 40%;
+    width: 20%;
   }
 
   .biodata p {
@@ -249,33 +247,6 @@ img.profile {
 
   .isi_jadwal {
     margin-top: 1rem;
-  }
-
-  .baris_satu {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .baris_dua {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .card3 {
-    order: 2;
-  }
-
-  .card4 {
-    position: absolute;
-    bottom: -200px;
-    left: 40px;
-  }
-  .card2 {
-    position: absolute;
-    bottom: -200px;
-    right: 40px;
   }
 }
 
@@ -286,13 +257,11 @@ img.profile {
   }
 
   .container_profile {
-    display: grid;
-    position: relative;
     margin-top: 8rem;
   }
 
   .card3 {
-    width: 90%;
+    width: 100%;
     margin: 1rem 0;
     height: auto;
   }
@@ -301,7 +270,6 @@ img.profile {
     text-align: center;
     width: 90vw;
     margin: 1rem 0;
-    order: 1;
   }
   .card1 p {
     width: 40%;
@@ -337,32 +305,5 @@ img.profile {
 
   .isi_jadwal {
     margin-top: 1rem;
-  }
-
-  .baris_satu {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .baris_dua {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .card3 {
-    order: 2;
-  }
-
-  .card4 {
-    position: absolute;
-    bottom: -160px;
-    left: 40px;
-  }
-  .card2 {
-    position: absolute;
-    bottom: -160px;
-    right: 40px;
   }
 }

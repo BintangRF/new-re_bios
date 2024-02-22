@@ -6,6 +6,7 @@ const Pasien = require("../models/pasien");
 const Psikolog = require("../models/psikolog");
 const Appointment = require("../models/appointment");
 const nodemailer = require("nodemailer");
+
 require("dotenv").config();
 
 function checkLoggedIn(req, res, next) {
@@ -180,6 +181,8 @@ router.post("/appointment", async (req, res) => {
       },
     });
 
+    const paymentLink = process.env.PAYMENT_LINK;
+
     const mailOptions = {
       from: process.env.GMAIL,
       to: email_pasien,
@@ -187,7 +190,7 @@ router.post("/appointment", async (req, res) => {
       text: `Konsultasi Anda akan dilakukan bersama Dr. ${nama_psikolog} secara ${type} pada ${dayOfWeek}, ${appointmentDate.toLocaleDateString(
         "id-ID",
         { day: "numeric", month: "long", year: "numeric" }
-      )} pukul ${waktu}.`,
+      )} pukul ${waktu}. \nPayment Link: ${paymentLink}`,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -198,7 +201,7 @@ router.post("/appointment", async (req, res) => {
       }
     });
 
-    const successMessage = "Appointment berhasil";
+    const successMessage = "Appointment berhasil. Silahkan Periksa Email Anda.";
     res.send(`
           <script>
             alert('${successMessage}');

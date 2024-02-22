@@ -3,8 +3,22 @@ const path = require("path");
 const fs = require("fs");
 const router = express.Router();
 const Pasien = require("../models/pasien");
+const multer = require("multer"); // Untuk menangani upload file
 const Appointment = require("../models/appointment");
 const Pembayaran = require("../models/pembayaran");
+
+const storage = multer.diskStorage({
+  destination: (req, file, callback) => {
+    callback(null, path.join(__dirname, "..", "public", "uploads"));
+  },
+  filename: (req, file, callback) => {
+    const ext = path.extname(file.originalname);
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    callback(null, uniqueSuffix + ext);
+  },
+});
+
+const upload = multer({ storage: storage });
 
 function checkLoggedIn(req, res, next) {
   if (req.session.userId && req.session.email_pasien) {
@@ -22,7 +36,7 @@ function checkLoggedIn(req, res, next) {
   }
 }
 
-router.get("/profile", checkLoggedIn, async (req, res) => {
+router.get("/profile", async (req, res) => {
   if (req.session.email_pasien) {
     const email_pasien = req.session.email_pasien;
     const id_pasien = req.session.id_pasien;
@@ -79,10 +93,10 @@ router.get("/profile", checkLoggedIn, async (req, res) => {
         if (appointment) {
           if (pembayaran) {
             profileData.jumlah_bayar = 80000;
-            profileData.status_bayar = "sudah";
+            profileData.status_bayar = "Sudah";
           } else {
             profileData.jumlah_bayar = 80000;
-            profileData.status_bayar = "belum";
+            profileData.status_bayar = "Upload Bukti Pembayaran";
           }
           const appointmentDate = new Date(appointment.tanggal);
 
@@ -147,6 +161,40 @@ router.get("/profile", checkLoggedIn, async (req, res) => {
     }
   } else {
     res.redirect("/login");
+  }
+});
+
+router.post("/profile", upload.single("bukti_pembayaran"), async (req, res) => {
+  try {
+    // Pastikan ada file yang diunggah
+    if (!req.file) {
+      res.send(`
+        <script>
+          alert('Siilahkan Upload Bukti Pembayaran Terlebih Dahulu');
+        </script>
+      `);
+    }
+
+    const id_pasien = req.body.id_pasien;
+    const bukti_pembayaran = req.file.filename; // Nama file yang diupload
+
+    // Lakukan proses penyimpanan bukti pembayaran ke database atau penyimpanan yang diperlukan
+    await Pembayaran.create({
+      id_pasien,
+      bukti_pembayaran,
+      status_bayar: "Sudah",
+    });
+
+    const successMessage = "Bukti pembayaran berhasil diupload";
+    res.send(`
+        <script>
+          alert('${successMessage}');
+          window.location='/profile';
+        </script>
+      `); // Redirect kembali ke halaman profile setelah upload berhasil
+  } catch (error) {
+    console.error("Kesalahan saat upload bukti pembayaran:", error);
+    res.status(500).send("Terjadi kesalahan saat upload bukti pembayaran.");
   }
 });
 

@@ -10,6 +10,7 @@ const appointmentPost = require("./posts/appointment");
 const pembayaranPost = require("./posts/pembayaran");
 const editprofilePost = require("./posts/edit_profile");
 const profilePost = require("./posts/profile");
+const paymentPost = require("./posts/payment");
 
 const sequelize = require("./config/database");
 const Pasien = require("./models/pasien");
@@ -74,6 +75,15 @@ app.get("/", (req, res) => {
   res.send(indexHtml);
 });
 
+// Route Dashboard
+app.get("/index", (req, res) => {
+  const indexHtml = fs.readFileSync(
+    path.join(__dirname, "views", "index.html"),
+    "utf8"
+  );
+  res.send(indexHtml);
+});
+
 // Route index setelah login
 app.get("/index2", checkLoggedIn, (req, res) => {
   if (req.session.email_pasien) {
@@ -113,15 +123,6 @@ app.use("/", loginPost);
 // Route Signup
 app.use("/", signupPost);
 
-// Route Dashboard
-app.get("/index", (req, res) => {
-  const indexHtml = fs.readFileSync(
-    path.join(__dirname, "views", "index.html"),
-    "utf8"
-  );
-  res.send(indexHtml);
-});
-
 // Route untuk Appointment
 app.use("/", appointmentPost);
 
@@ -133,6 +134,9 @@ app.use("/", profilePost);
 
 // Edit Profile
 app.use("/", editprofilePost);
+
+// Payment
+app.use("/", paymentPost);
 
 // Route Logout
 app.get("/logout", (req, res) => {
