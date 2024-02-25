@@ -121,6 +121,22 @@ router.post("/appointment", async (req, res) => {
       return res.status(404).send("Pasien tidak ditemukan");
     }
 
+    // Memeriksa apakah waktu dokter sudah diambil
+    const isAppointmentExist = await Appointment.findOne({
+      where: {
+        nama_psikolog,
+        tanggal: new Date(tanggal),
+        waktu,
+      },
+    });
+
+    if (isAppointmentExist) {
+      return res.send(
+        "<script>alert('Dokter sudah memiliki jadwal pada waktu tersebut. Silahkan pilih waktu atau dokter yang lain')</script>" +
+          "<script>window.history.back()</script>"
+      );
+    }
+
     // Memeriksa batasan maksimal jadwal dokter
     const jumlahJadwalHariIni = await Appointment.count({
       where: {
@@ -131,7 +147,7 @@ router.post("/appointment", async (req, res) => {
 
     if (jumlahJadwalHariIni >= 5) {
       return res.send(
-        "<script>alert('Dokter sudah memiliki maksimal jadwal hari ini')</script>" +
+        "<script>alert('Dokter sudah memiliki maksimal jadwal hari ini. Silahkan pilih waktu atau dokter yang lain  ')</script>" +
           "<script>window.history.back()</script>"
       );
     }
