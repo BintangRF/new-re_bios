@@ -15,8 +15,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
 
     <!-- Css -->
-    <link rel="stylesheet" href="/style/profile.css" />
-    <link rel="stylesheet" href="/style/navbar.css" />
+    <link rel="stylesheet" href="style/profile.css" />
+    <link rel="stylesheet" href="style/navbar.css" />
   </head>
   <body>
     <div id="navbar-container"></div>
@@ -24,15 +24,30 @@
     <!-- -------------------------------- -->
     <div class="container_profile">
       <p><a href="/index2" class="kembali">Kembali</a></p>
-      <div class="baris_satu">
+
+      <div class="boxContainer">
         <div class="card1">
           <img
-            src="/uploads/<%= profileData.foto_pasien %>"
+            src="uploads/<%= profileData.foto_pasien %>"
             alt="Foto Profil"
             class="profile" />
           <p><%= profileData.nama_pasien %></p>
           <p>ID: <%= profileData.id_pasien %></p>
           <a href="/edit_profile">Edit Profil</a>
+        </div>
+
+        <div class="card3">
+          <div class="biodata">
+            <p><%= profileData.nama_pasien %></p>
+            <hr />
+            <p><%= profileData.email_pasien %></p>
+            <hr />
+            <p><%= profileData.gender %></p>
+            <hr />
+            <p><%= profileData.nomor_ponsel %></p>
+            <hr />
+            <p><%= profileData.alamat %></p>
+          </div>
         </div>
 
         <div class="card2">
@@ -46,24 +61,30 @@
               <br />
               <p id="status-bayar">
                 Status Bayar: <%= profileData.status_bayar %>
+                <br />
+                <br />
               </p>
+              <form
+                method="post"
+                action="/profile"
+                enctype="multipart/form-data">
+                <input
+                  name="id_pasien"
+                  value="<%= profileData.id_pasien %>"
+                  style="display: none"
+                  readonly />
+                <input type="file" name="bukti_pembayaran" />
+                <button
+                  type="submit"
+                  style="
+                    background-color: #1450a3;
+                    padding: 0.4rem 0.5rem;
+                    color: white;
+                  ">
+                  Upload
+                </button>
+              </form>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="baris_dua">
-        <div class="card3">
-          <div class="biodata">
-            <p><%= profileData.nama_pasien %></p>
-            <hr />
-            <p><%= profileData.email_pasien %></p>
-            <hr />
-            <p><%= profileData.gender %></p>
-            <hr />
-            <p><%= profileData.nomor_ponsel %></p>
-            <hr />
-            <p><%= profileData.alamat %></p>
           </div>
         </div>
 
@@ -89,7 +110,7 @@
       </div>
     </div>
 
-    <script src="/script/script.js"></script>
+    <script src="script/script.js"></script>
     <script>
       function checkLoginStatus() {
         fetch("/check-login-status")

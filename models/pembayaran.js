@@ -10,11 +10,7 @@ const Pembayaran = sequelize.define("tb_pembayaran", {
   id_pasien: {
     type: Sequelize.INTEGER,
   },
-  nama_pasien: Sequelize.STRING,
-  email_pasien: Sequelize.STRING,
-  jumlah_biaya: Sequelize.INTEGER,
-  tanggal_bayar: Sequelize.DATE,
-  metode_pembayaran: Sequelize.STRING,
+  bukti_pembayaran: Sequelize.BLOB,
   status_bayar: Sequelize.STRING,
 });
 
