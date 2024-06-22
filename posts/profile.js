@@ -36,7 +36,7 @@ function checkLoggedIn(req, res, next) {
   }
 }
 
-router.get("/profile", async (req, res) => {
+router.get("/profile", checkLoggedIn, async (req, res) => {
   if (req.session.email_pasien) {
     const email_pasien = req.session.email_pasien;
     const id_pasien = req.session.id_pasien;
@@ -171,8 +171,10 @@ router.post("/profile", upload.single("bukti_pembayaran"), async (req, res) => {
       res.send(`
         <script>
           alert('Siilahkan Upload Bukti Pembayaran Terlebih Dahulu');
+          window.location='/profile';
         </script>
       `);
+      return;
     }
 
     const id_pasien = req.body.id_pasien;

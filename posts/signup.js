@@ -38,7 +38,7 @@ router.post("/signup", upload.single("foto_pasien"), async (req, res) => {
     const fotoFileName = "poto-profil.png";
     const fotoPath = path.join(__dirname, "../public/uploads/", fotoFileName);
 
-    await fs.writeFile(fotoPath, foto_pasien);
+    await fs.promises.writeFile(fotoPath, foto_pasien);
 
     const newPasien = await Pasien.create({
       nama_pasien,
@@ -70,7 +70,7 @@ async function getDefaultProfileImage() {
       __dirname,
       "../public/uploads/poto-profil.png"
     );
-    const defaultImageBuffer = await fs.readFile(defaultImagePath);
+    const defaultImageBuffer = await fs.promises.readFile(defaultImagePath);
     return defaultImageBuffer;
   } catch (error) {
     console.error("Error reading default profile image:", error);
